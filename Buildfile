@@ -29,13 +29,7 @@ define "clj-ants-sim" do
   package( :jar )
 end
 
-task :masterx do 
-  cur = project( "clj-ants-sim" )
-  puts "superjar #{cur.packages}"
+task :dist do 
 end
 
-desc "Make a super jar" 
-task :jarjar => :package do
-  puts "not implemented"
-end
 
