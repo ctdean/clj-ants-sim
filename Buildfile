@@ -27,11 +27,22 @@ define "clj-ants-sim" do
 
   compile.with deps
 
-  # package( :jar ).merge( deps )
   package( :jar )
+
+  dist = make_dist_task( project, deps )
+  desc "Make a distribution"
+  task :dist => dist do 
+    puts "Created #{dist}"
+  end
 end
 
-task :dist do 
+def make_dist_task(project, deps)
+  rel_name = "#{project.id}-#{project.version}"
+  container = tar( "#{rel_name}-complete.tar.gz" )
+  container.path( rel_name ).tap do |tar|
+    tar.include( "README.md" )
+    tar.include( deps, :path => "lib" )
+    tar.include( project.package.name, :path => "lib" )
+  end
+  container
 end
-
-
