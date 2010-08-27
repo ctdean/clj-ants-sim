@@ -11,6 +11,8 @@ GROUP = "clj-ants-sim"
 
 repositories.remote << "http://repo1.maven.org/maven2"
 
+repositories.release_to = "file:///tmp"
+
 deps = %w{
     org.clojure:clojure:jar:1.1.0
     org.clojure:clojure-contrib:jar:1.1.0
